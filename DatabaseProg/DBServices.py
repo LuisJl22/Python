@@ -20,7 +20,7 @@ class CarData:
         return self.query
 
     def car_make_new_table(self):
-        self.query = ("CREATE TABLE CARS ("
+        self.query = ("CREATE TABLE IF NOT EXISTS CARS ("
                       "car_brand VARCHAR(30),"
                       "car_model VARCHAR(30),"
                       "color VARCHAR(15),"
