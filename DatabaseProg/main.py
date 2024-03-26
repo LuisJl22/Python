@@ -17,24 +17,24 @@ def sql_connect():
         return mysql_connection
 
     except Exception as e:
-        print(f"Error connecting to cats database")
+        print(f"Error connecting to python2 database")
 
 
 def accept_data(mysql_connection):
     cursor = mysql_connection.cursor
-    db = CatsData()
-    cursor.execute(db.cats_select())
+    db = CarData()
+    cursor.execute(db.car_select())
 
     rows = cursor.fetchall()
     for row in rows:
         print(row)
 
     while True:
-        usr_des = input("Would you like to add a new cat to the table? (Y/N) ")
+        usr_des = input("Would you like to add a new car to the table? (Y/N) ")
 
         if usr_des == "Y":
-            if cat_details(db):
-                cursor.execute(db.cats_insert(), (db.cat_id, db.owner_id, db.name, db.breed, db.age))
+            if car_details(db):
+                cursor.execute(db.car_insert(), (db.car_id, db.make, db.model, db.year))
                 print("Successfully Added Data")
                 break
         else:
@@ -47,19 +47,14 @@ def sql_close(mysql_connection):
     mysql_connection.close()
 
 
-def cat_details(catsdata):
-    usr_c_id = input("Enter Cat ID")
-    usr_o_id = input("Enter Owner ID")
-    usr_name = input("Enter Name")
-    usr_breed = input("Enter Breed")
-    usr_age = input("Enter Age")
+def cat_details(cardata):
+    usr_c_id = input("Enter Car ID")
+    usr_make = input("Enter Car Make")
+    usr_model = input("Enter Car Model")
+    usr_year = input("Enter Year")
 
-    catsdata.cats_construct(usr_c_id,
-                            usr_o_id,
-                            usr_name,
-                            usr_breed,
-                            usr_age)
 
+    cardata.car_construct(car_insert(), usr_c_id, usr_make, usr_model, usr_year)
     return True
 
 
