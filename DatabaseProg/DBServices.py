@@ -19,6 +19,16 @@ class CarData:
                       "(%s,%s,%s,%s,%s)")
         return self.query
 
+    def car_make_new_table(self):
+        self.query = ("CREATE TABLE CARS ("
+                      "car_brand VARCHAR(30),"
+                      "car_model VARCHAR(30),"
+                      "color VARCHAR(15),"
+                      "fuel_type VARCHAR(30),"
+                      "year INT"
+                      ")")
+        return self.query
+
     def car_select(self):
         self.query = (f"SELECT * "
                       f"FROM CARS ")
