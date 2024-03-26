@@ -34,7 +34,7 @@ def accept_data(mysql_connection):
 
         if usr_des == "Y":
             if car_details(db):
-                cursor.execute(db.car_insert(), (db.car_id, db.make, db.model, db.year))
+                cursor.execute(db.car_insert(), (db.car_brand, db.car_model, db.color, db.fuel_type, db.year))
                 print("Successfully Added Data")
                 break
         else:
@@ -47,14 +47,15 @@ def sql_close(mysql_connection):
     mysql_connection.close()
 
 
-def cat_details(cardata):
-    usr_c_id = input("Enter Car ID")
-    usr_make = input("Enter Car Make")
+def car_details(cardata):
+    usr_make = input("Enter Car Brand")
     usr_model = input("Enter Car Model")
+    usr_colr = input("Enter car color")
+    usr_fuel = input("Enter car fuel type")
     usr_year = input("Enter Year")
 
 
-    cardata.car_construct(car_insert(), usr_c_id, usr_make, usr_model, usr_year)
+    cardata.car_construct(cardata.car_insert(), usr_make, usr_model, usr_colr, usr_fuel, usr_year)
     return True
 
 
