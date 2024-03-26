@@ -10,7 +10,7 @@ def main():
 
 def sql_connect():
     try:
-        mysql_connection = MySQLConnection('127.0.0.1', 'root', '1111', 'python2')
+        mysql_connection = MySQLConnection('127.0.0.1', 'root', 'SpCC33!9', 'python2')
 
         mysql_connection.connect()
 
@@ -23,6 +23,7 @@ def sql_connect():
 def accept_data(mysql_connection):
     cursor = mysql_connection.cursor
     db = CarData()
+    cursor.execute(db.car_make_new_table())
     cursor.execute(db.car_select())
 
     rows = cursor.fetchall()
@@ -54,8 +55,7 @@ def car_details(cardata):
     usr_fuel = input("Enter car fuel type")
     usr_year = input("Enter Year")
 
-
-    cardata.car_construct(cardata.car_insert(), usr_make, usr_model, usr_colr, usr_fuel, usr_year)
+    cardata.car_construct(usr_make, usr_model, usr_colr, usr_fuel, usr_year)
     return True
 
 
