@@ -1,33 +1,26 @@
-class CatsData:
+class CarData:
     def __init__(self):
         self.query = None
-        self.cat_id = '1'
-        self.owner_id = '1'
-        self.name = "Lucille"
-        self.breed = 'bengal'
-        self.age = "4"
+        self.car_brand = "Toyota"
+        self.car_model = "Rav4"
+        self.color = "Red"
+        self.fuel_type = "Gas"
+        self.year = 2015
 
-    def cats_construct(self, cat_id, owner_id, name, breed, age):
-        self.cat_id = cat_id
-        self.owner_id = owner_id
-        self.name = name
-        self.breed = breed
-        self.age = age
+    def car_construct(self, car_brand, car_model, color, fuel_type, year):
+        self.car_brand = car_brand
+        self.car_model = car_model
+        self.color = color
+        self.fuel_type = fuel_type
+        self.year = year
 
-    def cats_insert(self):
-        self.query = ("INSERT INTO CATS VALUES"
+    def car_insert(self):
+        self.query = ("INSERT INTO CARS VALUES"
                       "(%s,%s,%s,%s,%s)")
-        # self.query = (f"INSERT INTO CATS "
-        #               f"VALUES('{self.cat_id}',"
-        #               f" '{self.owner_id}',"
-        #               f" '{self.name}',"
-        #               f" '{self.breed}', "
-        #               f"'{self.age}')"
-        #               )
         return self.query
 
-    def cats_select(self):
+    def car_select(self):
         self.query = (f"SELECT * "
-                      f"FROM CATS ")
+                      f"FROM CARS ")
 
         return self.query
